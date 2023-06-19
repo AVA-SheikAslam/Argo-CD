@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: dockerhubusername/nginx-image:tag
+        image: sheikaslam/circleci:944e25bcdaf8a9ed5ba2d8c8ece4783a8d98f5c9
         ports:
         - containerPort: 80
