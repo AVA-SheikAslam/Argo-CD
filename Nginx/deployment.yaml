@@ -1,22 +1,20 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: nginx-deployment
   namespace: argocd
 spec:
-  project: default
-  source: Argo-CD/Nginx
-/deployment.yaml
-    repoURL: https://github.com/your-repo
-    path: path/to/deployment-files
-    targetRevision: HEAD
-    directory:
-      recurse: true
-  destination:
-    namespace: nginx
-    server: https://kubernetes-api-server
-    name: "Ngnix-Stat-Webpg"
-    namespace: "Nginx-ArgoCD"
-  syncPolicy:
-    automated:
-      prune: true
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: dockerhubusername/nginx-image:tag
+        ports:
+        - containerPort: 80
