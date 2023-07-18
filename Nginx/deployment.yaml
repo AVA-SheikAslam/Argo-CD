@@ -11,7 +11,7 @@ spec:
       app: nginx
       destination:
     server: https://kubernetes.default.svc # Kubernetes cluster URL
-    namespace: ArgoCD-Ngnix # Namespace where the application will be deployed
+    namespace: argocd-nginx # Namespace where the application will be deployed
   syncPolicy:
     automated:
       prune: true
